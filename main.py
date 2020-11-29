@@ -1,8 +1,8 @@
+#variables, lists and inputs
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 
-
+# Encrypt Function
 def encrypt(text, shift):
   encoded_list = []
   for i in text:
@@ -10,10 +10,28 @@ def encrypt(text, shift):
   encoded_text = ''.join(encoded_list)
   print(f"Encoded text: {encoded_text}")
 
+# Decrypt Function
+def decrypt(text, shift):
+  decoded_list = []
+  for i in text:
+    decoded_list.append(alphabet[alphabet.index(i)-shift])
+  decoded_text = ''.join(decoded_list)
+  print(f"Decoded text: {decoded_text}")
 
-if direction == 'encode':
-  text = input("Type your message:\n").lower()
-  shift = int(input("Type the shift number(integer):\n"))
-  encrypt(text, shift)
-else:
-  print("Function coming soon.")
+# Code which helps in running
+while True:
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt, type 'exit' to exit:\n")
+  if direction == 'exit':
+    print("Bye!")
+    break
+  elif direction == 'encode' or direction == 'decode':
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number(integer):\n"))
+    if direction == 'encode':
+      encrypt(text, shift)
+    elif direction == 'decode':
+      decrypt(text, shift)
+    else:
+      print("Sorry, I don't understand.")
+  else:
+    print("Sorry, I don't understand.")
