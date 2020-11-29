@@ -8,15 +8,8 @@ def encrypt(text, shift):
   for i in text:
     encoded_list.append(alphabet[alphabet.index(i)+shift])
   encoded_text = ''.join(encoded_list)
-  print(f"Encoded text: {encoded_text}")
+  print(f"Result: {encoded_text}")
 
-# Decrypt Function
-def decrypt(text, shift):
-  decoded_list = []
-  for i in text:
-    decoded_list.append(alphabet[alphabet.index(i)-shift])
-  decoded_text = ''.join(decoded_list)
-  print(f"Decoded text: {decoded_text}")
 
 # Code which helps in running
 while True:
@@ -30,7 +23,7 @@ while True:
     if direction == 'encode':
       encrypt(text, shift)
     elif direction == 'decode':
-      decrypt(text, shift)
+      encrypt(text, -shift)
     else:
       print("Sorry, I don't understand.")
   else:
